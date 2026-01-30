@@ -31,7 +31,7 @@ _apprun() {
 
 _mium() { _apprun "ungoogled-chromium/chrome" "${@}"; }
 _brv() { _apprun "brave-browser/brave-browser" "${@}"; }
-_heli() { _apprun "helium-browser/chrome" "${@}"; }
+_heli() { _apprun "helium-browser/helium" "${@}"; }
 _zen() { _apprun "zen-browser/zen"; }
 _fox() { _apprun "waterfox/waterfox"; }
 

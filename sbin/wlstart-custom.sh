@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 errf() { printf "${@}" >&2; exit 1; }
 
 which evars.sh &>/dev/null || errf "evars.sh not found\n"

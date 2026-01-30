@@ -18,6 +18,6 @@ dracut-install() {
 
 [[ -d "${kdir}" ]] && dracut-install "${kdir}" && exit 0
 
-findmnt /a &>/dev/null || dracut-install /efi/boota
-findmnt /b &>/dev/null || dracut-install /efi/bootb
+findmnt /a &>/dev/null || dracut-install /efi/a
+findmnt /b &>/dev/null || dracut-install /efi/b
 

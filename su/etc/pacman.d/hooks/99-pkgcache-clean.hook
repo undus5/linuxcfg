@@ -4,5 +4,6 @@ Operation = Upgrade
 Type = Package
 Target = *
 [Action]
+Description = Clean package cache
 When = PostTransaction
 Exec = /etc/pacman.d/scripts/pkgcache-clean.sh
