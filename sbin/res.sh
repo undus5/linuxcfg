@@ -7,7 +7,7 @@ source $(which evars.sh)
 
 _vdir=${_resdir}
 [[ -d ${_vdir} ]] || errf "directory not found: ${_vdir}\n"
-_port=8084
+_port=8086
 
 play() {
     _request=${1}
