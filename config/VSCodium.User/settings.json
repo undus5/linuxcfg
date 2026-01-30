@@ -1,0 +1,15 @@
+{
+    "editor.fontFamily": "monoterm, monospace",
+    "editor.fontSize": 16,
+    "security.workspace.trust.untrustedFiles": "open",
+    "search.quickOpen.includeHistory": false,
+    "terminal.integrated.commandsToSkipShell": ["-workbench.action.quickOpen"],
+    "window.titleBarStyle": "custom",
+    "editor.rulers": [
+        80
+    ],
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "security.workspace.trust.enabled": false,
+    "workbench.colorTheme": "Default Light Modern",
+    "git.openRepositoryInParentFolders": "always"
+}

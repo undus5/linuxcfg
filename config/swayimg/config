@@ -1,0 +1,3 @@
+[keys.viewer]
+h = prev_file
+l = next_file

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=VSCodium
+Exec=/home/u/a/apps/vscodium/codium %F
+Icon=/home/u/a/apps/vscodium/resources/app/resources/linux/code.png
+StartupNotify=true
+Type=Application
+Categories=TextEditor;Development;

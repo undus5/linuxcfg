@@ -1,0 +1,14 @@
+# kanshictl [ reload | switch <profile> ]
+# swaymsg -t get_outputs
+
+output 'Dell Inc. DELL S2721HS 53WYV83' alias $DELL_27
+output 'Invalid Vendor Codename - RTK 0x1920 0x01010101' alias $PORT_15
+output 'HJW HDMI TO USB 0x0134660A' alias $USB_CAP
+
+profile p1527 {
+    output $PORT_15 position 0,0
+    output $DELL_27 position 1920,0
+    exec swaymsg focus output '"Dell Inc. DELL S2721HS 53WYV83"'
+    # exec swaymsg workspace 21:[, move workspace output '"Invalid Vendor Codename - RTK 0x1920 0x01010101"', focus output '"Dell Inc. DELL S2721HS 53WYV83"'
+}
+

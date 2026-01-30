@@ -1,0 +1,5 @@
+{
+  "listen": ["socks://127.0.0.1:50443", "http://127.0.0.1:58080"],
+  "proxy": "https://__USER__:__PASS__@__DOMAIN__",
+  "log": ""
+}

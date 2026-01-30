@@ -1,0 +1,26 @@
+# gost -L red://:10443?tproxy=true -F socks5://:50443
+services:
+  - name: service-0
+    addr: :10443
+    handler:
+      type: red
+      chain: chain-0
+      metadata:
+        tproxy: "true"
+    listener:
+      type: red
+      metadata:
+        tproxy: "true"
+    metadata:
+      tproxy: "true"
+chains:
+  - name: chain-0
+    hops:
+      - name: hop-0
+        nodes:
+          - name: node-0
+            addr: :50443
+            connector:
+              type: socks5
+            dialer:
+              type: tcp

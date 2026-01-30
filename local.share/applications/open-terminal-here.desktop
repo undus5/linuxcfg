@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Open Terminal Here
+Exec=open-terminal-here.sh %F
+Icon=foot
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;
+MimeType=inode/directory;

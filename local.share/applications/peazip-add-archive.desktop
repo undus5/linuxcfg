@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PeaZip Add Archive
+Comment=Add files and folders to archive with PeaZip
+Exec=/home/u/a/apps/peazip/peazip -add2archive %F
+Icon=/home/u/a/apps/peazip/res/share/icons/peazip_add.png
+Type=Application
+Categories=Utility;Archiving;Compression;
+Keywords=zip;rar;tar;extract;unpack;
+MimeType=application/octet-stream;

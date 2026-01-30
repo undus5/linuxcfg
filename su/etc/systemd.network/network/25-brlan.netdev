@@ -1,0 +1,4 @@
+[NetDev]
+Name=brlan
+Kind=bridge
+MACAddress=none

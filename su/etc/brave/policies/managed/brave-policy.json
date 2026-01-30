@@ -1,0 +1,8 @@
+{
+  "BraveAIChatEnabled": true,
+  "BraveRewardsDisabled": true,
+  "BraveWalletDisabled": true,
+  "BraveNewsDisabled": true,
+  "BraveTalkDisabled": true,
+  "BraveVPNDisabled": 1
+}

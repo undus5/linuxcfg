@@ -1,0 +1,68 @@
+// -*- mode: jsonc -*-
+{
+    "position": "bottom",
+    "modules-left": [
+        "sway/workspaces",
+        "sway/scratchpad",
+    ],
+    "modules-center": [
+        "sway/window",
+    ],
+    "modules-right": [
+        "custom/idle-state",
+        "custom/volume-state",
+        "privacy",
+        "custom/pavucontrol",
+        "tray",
+        "custom/datetime",
+    ],
+    "sway/workspaces": {
+        "enable-bar-scroll": true
+    },
+    "sway/scratchpad": {
+        "format": "■ {count}",
+        "show-empty": false,
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "sway/window": {
+        "format": "{title}",
+        "tooltip": false,
+    },
+    "custom/idle-state": {
+        "exec": "~/.config/sway/config.d/sway-trigger.sh idle-status-waybar",
+        "on-click": "~/.config/sway/config.d/sway-trigger.sh idle-toggle",
+    },
+    "custom/volume-state": {
+        "exec": "~/.config/sway/config.d/sway-trigger.sh volume-status-waybar",
+    },
+    "custom/pavucontrol": {
+        "format": "Vol",
+        "on-click": "pavucontrol",
+    },
+    "privacy": {
+        "icon-spacing": 3,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 22
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 22
+            }
+        ]
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 7
+    },
+    "custom/datetime": {
+        "exec": "date +'%b %-d %a %R'",
+        "interval": 1,
+    },
+}

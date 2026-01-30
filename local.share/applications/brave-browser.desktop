@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Brave
+StartupNotify=true
+StartupWMClass=brave-browser
+TryExec=/home/u/a/apps/brave-browser/brave-browser
+Exec=/home/u/a/apps/brave-browser/brave-browser %U
+Icon=/home/u/a/apps/brave-browser/product_logo_256.png
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ipfs;x-scheme-handler/ipns;
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+[[ ${#} == 4 ]] || exit 0
+
+cmd="${1}"
+kver="${2}"
+dir="${3}"
+kimg="${4}"
+
+[[ "${cmd}" == "add" ]] || exit 0
+[[ -f "${kimg}" ]] || exit 1
+
+/usr/local/sbin/dracut-install.sh "${kver}"
+
