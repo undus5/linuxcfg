@@ -1,0 +1,7 @@
+apps/
+bin/
+local.share/fonts/
+local.share/icons/
+ports/
+su/usr.local/etc/
+
