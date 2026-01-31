@@ -1,4 +1,4 @@
 # linuxcfg
 
-linux configs for self use
+linux configs
 
