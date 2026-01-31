@@ -7,8 +7,8 @@ Requires=network-online.target
 [Service]
 Type=notify
 User=%i
-ExecStart=/usr/local/bin/naivecaddy run --environ --config /usr/local/etc/caddyfile
-ExecReload=/usr/local/bin/naivecaddy reload --config /usr/local/etc/Caddyfile --force
+ExecStart=/usr/local/bin/naivecaddy run --environ --config /usr/local/cfg/caddyfile
+ExecReload=/usr/local/bin/naivecaddy reload --config /usr/local/cfg/caddyfile --force
 TimeoutStopSec=5s
 LimitNOFILE=1048576
 PrivateTmp=true

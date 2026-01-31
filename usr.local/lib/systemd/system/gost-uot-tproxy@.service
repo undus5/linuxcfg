@@ -6,7 +6,7 @@ Requires=network-online.target
 [Service]
 User=%i
 Type=simple
-ExecStart=/usr/local/bin/gost -C /usr/local/etc/gost-uot-tproxy.yml
+ExecStart=/usr/local/bin/gost -C /usr/local/cfg/gost-uot-tproxy.yml
 TimeoutStopSec=5s
 LimitNOFILE=1024000
 PrivateTmp=true

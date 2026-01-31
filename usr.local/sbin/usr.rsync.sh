@@ -3,7 +3,7 @@
 errf() { printf "${@}" >&2 && exit 1; }
 
 user=u
-udir=/home/${user}/a/su/usr.local/
+udir=/home/${user}/a/usr.local/
 rdir=/usr/local/
 
 if [[ ${EUID} == 0 ]]; then

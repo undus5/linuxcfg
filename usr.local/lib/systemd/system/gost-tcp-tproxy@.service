@@ -1,12 +1,12 @@
 [Unit]
-Documentation=https://github.com/klzgrad/naiveproxy
+Documentation=https://github.com/go-gost/gost
 After=network.target network-online.target
 Requires=network-online.target
 
 [Service]
 User=%i
 Type=simple
-ExecStart=/usr/local/bin/naiveproxy /usr/local/etc/naiveproxy.json
+ExecStart=/usr/local/bin/gost -C /usr/local/share/tunn/gost-tcp-tproxy.yml
 TimeoutStopSec=5s
 LimitNOFILE=1024000
 PrivateTmp=true

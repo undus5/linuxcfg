@@ -10,7 +10,7 @@ StartLimitIntervalSec=60
 [Service]
 Type=forking
 PIDFile=/run/smartdns.pid
-ExecStart=/usr/local/bin/smartdns -c /usr/local/etc/smartdns.conf -p /run/smartdns.pid
+ExecStart=/usr/local/bin/smartdns -c /usr/local/share/tunn/smartdns.conf -p /run/smartdns.pid
 Restart=always
 RestartSec=2
 TimeoutStopSec=15

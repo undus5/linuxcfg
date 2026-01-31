@@ -4,10 +4,10 @@ Name=brnat
 [Network]
 IPv4Forwarding=yes
 DHCPServer=true
-Address=10.9.8.7/24
+Address=10.20.30.40/24
 
 [DHCPServer]
-DNS=10.9.8.7
+DNS=10.20.30.40
 PoolOffset=100
 PoolSize=100
 
@@ -18,5 +18,5 @@ RouteMetric=200
 RouteMetric=200
 
 # [DHCPServerStaticLease]
-# MACAddress=52:54:00:12:34:56
-# Address=10.9.8.235
+# MACAddress=52:54:e0:50:58:16
+# Address=10.20.30.235
