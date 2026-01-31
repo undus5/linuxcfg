@@ -7,7 +7,7 @@ udir=/home/${user}/a/usr.local/
 rdir=/usr/local/
 
 if [[ ${EUID} == 0 ]]; then
-    [[ "${1}" == "su" ]] || errf "whoami: $(whoami)\n"
+    [[ "${1}" == "root" ]] || errf "whoami: $(whoami)\n"
     srcdir=${udir}
     dstdir=${rdir}
 else
