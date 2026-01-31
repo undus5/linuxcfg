@@ -1,5 +1,8 @@
 #!/bin/nft -f
 
+# arch /etc/nftables.conf
+# fedora /etc/sysconfig/nftables.conf
+
 table ip brnat {
     chain nat_postrouting {
 		type nat hook postrouting priority filter
