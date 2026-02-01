@@ -2,16 +2,16 @@
 
 # errf() { printf "${@}" >&2; exit 1; }
 
-_sdir=$(dirname $(realpath ${BASH_SOURCE[0]}))
-_adir=$(realpath ${_sdir}/../apps)
+sdir=$(dirname $(realpath ${BASH_SOURCE[0]}))
+adir=$(realpath ${sdir}/../apps)
 
 print_help() {
     printf "Usage: $(basename $0) <app_name>\n"
-    printf "<app_name>: "; funclist | sed 's/_//g'; exit 1
+    printf "<app_name>: "; funclist; exit 1
 }
 
 funclist() {
-    declare -F | grep -Ev "funclist|print_help|apprun|bkr" \
+    declare -F | grep -Ev "funclist|print_help|bkr|apprun" \
         | awk '{printf "%s ", $3} END {printf "\n"}'
 }
 
@@ -20,76 +20,76 @@ bkr() {
 }
 
 apprun() {
-    local _apppath="${1}"; shift
-    local _exec="${_adir}/${_apppath}"
-    [[ -f "${_exec}" ]] || print_help
-    _exec+=" ${@}"
-    bkr ${_exec}
+    local apppath="${1}"; shift
+    local exec="${adir}/${apppath}"
+    [[ -f "${exec}" ]] || print_help
+    exec+=" ${@}"
+    bkr ${exec}
 }
 
 ################################################################################
 
-_mium() { apprun "ungoogled-chromium/chrome" "${@}"; }
-_brv() { apprun "brave-browser/brave-browser" "${@}"; }
-_heli() { apprun "helium-browser/helium" "${@}"; }
-_zen() { apprun "zen-browser/zen"; }
-_fox() { apprun "waterfox/waterfox"; }
+mium() { apprun "ungoogled-chromium/chrome" "${@}"; }
+brv() { apprun "brave-browser/brave-browser" "${@}"; }
+heli() { apprun "helium-browser/helium" "${@}"; }
+zen() { apprun "zen-browser/zen"; }
+fox() { apprun "waterfox/waterfox"; }
 
-_tg() { apprun "Telegram/Telegram"; }
+tg() { apprun "Telegram/Telegram"; }
 
-_vsc() { apprun "vscodium/codium" "${@}"; }
-_subl() { apprun "sublime-text/sublime-text" "${@}"; }
-_stud() { apprun "android-studio/bin/studio"; }
-_npn() { apprun "appimages/notepadnext.AppImage" "${@}"; }
+vsc() { apprun "vscodium/codium" "${@}"; }
+subl() { apprun "sublime-text/sublime-text" "${@}"; }
+stud() { apprun "android-studio/bin/studio"; }
+npn() { apprun "appimages/notepadnext.AppImage" "${@}"; }
 
-_los() { apprun "LosslessCut/losslesscut"; }
-_draw() { apprun "appimages/drawio.AppImage"; }
-_kden() { apprun "appimages/kdenlive.AppImage"; }
-_send() { apprun "appimages/localsend.AppImage"; }
-_dian() { apprun "appimages/obsidian.AppImage"; }
+los() { apprun "LosslessCut/losslesscut"; }
+draw() { apprun "appimages/drawio.AppImage"; }
+kden() { apprun "appimages/kdenlive.AppImage"; }
+send() { apprun "appimages/localsend.AppImage"; }
+dian() { apprun "appimages/obsidian.AppImage"; }
 
-_pzip() { apprun "peazip/peazip"; }
+pzip() { apprun "peazip/peazip"; }
 
-_eden() { apprun "appimages/eden.AppImage"; }
-_vcb() { apprun "vcb/vcb.x86_64"; }
+eden() { apprun "appimages/eden.AppImage"; }
+vcb() { apprun "vcb/vcb.x86_64"; }
 
-_vent() { shift; cd ${_adir}/ventoy; ./Ventoy2Disk.sh "${@}"; }
+vent() { shift; cd ${adir}/ventoy; ./Ventoy2Disk.sh "${@}"; }
 
-_offi() {
-    local _files=()
-    for _arg in "${@}"; do
-        _files+=($(realpath "${_arg}"))
+offi() {
+    local files=()
+    for arg in "${@}"; do
+        files+=($(realpath "${arg}"))
     done
-    apprun "appimages/onlyoffice.AppImage" "${_files[@]}";
+    apprun "appimages/onlyoffice.AppImage" "${files[@]}";
 }
 
-_tor() {
-    cd "${_adir}/tor-browser"
+tor() {
+    cd "${adir}/tor-browser"
     ./start-tor-browser.desktop --detach
 }
 
-_mium-unsafe() {
-    local _udir=$(realpath ~)/.local/share/chromium-unsafe
+mium-unsafe() {
+    local udir=$(realpath ~)/.local/share/chromium-unsafe
     apprun "ungoogled-chromium/chrome" \
-        "--disable-web-security --user-data-dir=${_udir} ${@}"
+        "--disable-web-security --user-data-dir=${udir} ${@}"
 }
 
 ################################################################################
 
-_rime() { rm -rf ~/.local/share/fcitx5/rime/build; fcitx5 -d -r &>/dev/null & }
-_fps() { MANGOHUD_CONFIG="gpu_temp,cpu_temp,frametime=0" bkr mangohud vkcube; }
-_gbkz() { shift; unzip -O GB18030 "${@}"; }
-_cam() { bkr mpv av://v4l2:/dev/video0 --profile=low-latency; }
-_yt() { shift; yt-dlp -S "res:${1}" "${2}"; }
+rime() { rm -rf ~/.local/share/fcitx5/rime/build; fcitx5 -d -r &>/dev/null & }
+fps() { MANGOHUD_CONFIG="gpu_temp,cpu_temp,frametime=0" bkr mangohud vkcube; }
+gbkz() { shift; unzip -O GB18030 "${@}"; }
+cam() { bkr mpv av://v4l2:/dev/video0 --profile=low-latency; }
+yt() { shift; yt-dlp -S "res:${1}" "${2}"; }
 
-_lgc() {
-    local _bdir=${_adir}/looking-glass/build
-    [[ -d "${_bdir}" ]] && rm -rf "${_bdir}"
-    mkdir -p "${_bdir}" && cd "${_bdir}"
+lgc() {
+    local bdir=${adir}/looking-glass/build
+    [[ -d "${bdir}" ]] && rm -rf "${bdir}"
+    mkdir -p "${bdir}" && cd "${bdir}"
     cmake -DENABLE_X11=no -DENABLE_PULSEAUDIO=no ../src/client/ && make
 }
 
-_iomm() {
+iomm() {
     shopt -s nullglob
     for g in $(find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V); do
         echo "IOMMU Group ${g##*/}:"
@@ -101,7 +101,8 @@ _iomm() {
 
 ################################################################################
 
-_funcname=${1}; shift
-funclist | grep -q "_${_funcname} " || print_help
-_${_funcname} "${@}"
+funcname=${1}; shift
+[[ -n "${funcname}" ]] || print_help
+funclist | grep -q "${funcname} " || print_help
+${funcname} "${@}"
 

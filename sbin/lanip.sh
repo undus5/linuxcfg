@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# _sdir=$(dirname $(realpath ${BASH_SOURCE[0]}))
 errf() { printf "${@}" >&2; exit 1; }
 
 which evars.sh &>/dev/null || errf "evars.sh not found\n"
@@ -10,15 +9,15 @@ command_check() {
     command -v ${1} &>/dev/null || errf "command not found: ${1}\n"
 }
 
-_devname=${1}
-[[ -n "${_devname}" ]] || errf "Usage: $(basename ${0}) <device_name>\n"
-# _devmac=_${!_devname}
-declare -n _devmac=_${_devname}
-[[ -n "${_devmac}" ]] || errf "undefined device: ${_devname}\n"
+devname="${1}"
+[[ -n "${devname}" ]] || errf "Usage: $(basename ${0}) <device_name>\n"
+# devmac=${!devname}
+declare -n devmac=${devname}
+[[ -n "${devmac}" ]] || errf "undefined device: ${devname}\n"
 
 command_check arp-scan
 # ip link | grep brnat | grep -q "state UP" \
-#     && arp-scan -x -l -I brnat | grep ${_devmac} | awk '{ print $1 }'
+#     && arp-scan -x -l -I brnat | grep ${devmac} | awk '{ print $1 }'
 ip link | grep brlan | grep -q "state UP" \
-    && arp-scan -x -l -I brlan | grep ${_devmac} | awk '{ print $1 }'
+    && arp-scan -x -l -I brlan | grep ${devmac} | awk '{ print $1 }'
 

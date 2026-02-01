@@ -5,8 +5,8 @@ errf() { printf "${@}" >&2; exit 1; }
 which evars.sh &>/dev/null || errf "evars.sh not found\n"
 source $(which evars.sh)
 
-_sdir=${_sitesdir}
-[[ -d "${_sdir}" ]] || errf "directory not found: ${_sdir}\n"
+sdir=${sitesdir}
+[[ -d "${sdir}" ]] || errf "directory not found: ${sdir}\n"
 _exec="hugo -D --watch"
 
 stop() {
@@ -17,13 +17,13 @@ stop() {
 start() {
     local _pids=$(pidof hugo)
     [[ -n "${_pids}" ]] && exit 0
-    cd ${_sdir}/blog
+    cd ${sdir}/blog
     nohup ${_exec} &>/dev/null &
-    cd ${_sdir}/drafts
+    cd ${sdir}/drafts
     nohup ${_exec} &>/dev/null &
-    cd ${_sdir}/res
+    cd ${sdir}/res
     nohup ${_exec} &>/dev/null &
-    cd ${_sdir}/hugo-pure
+    cd ${sdir}/hugo-pure
     nohup ./demo.sh -b --watch &>/dev/null &
 }
 
@@ -38,3 +38,4 @@ case ${1} in
         stop && start
         ;;
 esac
+

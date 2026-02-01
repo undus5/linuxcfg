@@ -1,28 +1,28 @@
 #!/bin/bash
 
-_term=foot
-# _term=alacritty
+term=foot
+# term=alacritty
 
 if [[ -d "${1}" ]]; then
-    _wdir="${1}"; shift
-    _cmd="${@}"
-    if [[ "${_term}" == "foot" ]]; then
-        foot -D "${_wdir}" ${_cmd}
-    elif [[ "${_term}" == "alacritty" ]]; then
-        alacritty --working-directory "${_wdir}" -e ${_cmd}
+    wdir="${1}"; shift
+    cmd="${@}"
+    if [[ "${term}" == "foot" ]]; then
+        foot -D "${wdir}" ${cmd}
+    elif [[ "${term}" == "alacritty" ]]; then
+        alacritty --working-directory "${wdir}" -e ${cmd}
     fi
 elif [[ -n "${@}" ]]; then
-    _exec="${1}"; shift
-    _args="${@}"
-    if [[ "${_term}" == "foot" ]]; then
-        foot ${_exec} "${_args}"
-    elif [[ "${_term}" == "alacritty" ]]; then
-        alacritty -e ${_cmd} "${_args}"
+    exec="${1}"; shift
+    args="${@}"
+    if [[ "${term}" == "foot" ]]; then
+        foot ${exec} "${args}"
+    elif [[ "${term}" == "alacritty" ]]; then
+        alacritty -e ${cmd} "${args}"
     fi
 else
-    if [[ "${_term}" == "foot" ]]; then
+    if [[ "${term}" == "foot" ]]; then
         foot
-    elif [[ "${_term}" == "alacritty" ]]; then
+    elif [[ "${term}" == "alacritty" ]]; then
         alacritty
     fi
 fi

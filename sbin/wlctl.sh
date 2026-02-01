@@ -2,13 +2,11 @@
 
 set -e
 
-errf() {
-    printf "${@}" >&2 && exit 1
-}
+errf() { printf "${@}" >&2 && exit 1; }
 
 command-check() {
-    local _name=${1}
-    command -v ${_name} &>/dev/null || errf "command not found: ${_name}\n"
+    local name=${1}
+    command -v ${name} &>/dev/null || errf "command not found: ${name}\n"
 }
 
 #################################################################################
@@ -18,19 +16,19 @@ command-check() {
 
 vol-get() {
     command-check wpctl
-    local _id=${1}
-    local _info=$(wpctl get-volume ${_id})
-    local _integer=$(echo "${_info}" | awk -F'[. ]' '{ print $2 }')
-    local _fraction=$(echo "${_info}" | awk -F'[. ]' '{ print $3 }')
-    local _muted=$(echo "${_info}" | awk -F'[. ]' '{ print $4 }')
-    local _label=""
+    local id=${1}
+    local info=$(wpctl get-volume ${id})
+    local integer=$(echo "${info}" | awk -F'[. ]' '{ print $2 }')
+    local fraction=$(echo "${info}" | awk -F'[. ]' '{ print $3 }')
+    local muted=$(echo "${info}" | awk -F'[. ]' '{ print $4 }')
+    local label=""
 
-    if [[ "${_muted}" == "[MUTED]" ]]; then
-        _label=${_muted}
+    if [[ "${muted}" == "[MUTED]" ]]; then
+        label=${muted}
     else
-        [[ "${_integer}" == "1" ]] && _label="100%" || _label="${_fraction}%"
+        [[ "${integer}" == "1" ]] && label="100%" || label="${fraction}%"
     fi
-    echo "${_label}"
+    echo "${label}"
 }
 
 vol-num() {
@@ -64,27 +62,27 @@ mute-toggle-mic() {
 sink-toggle() {
     command-check wpctl
     command-check jq
-    local _sinkids=( $(pw-dump | jq '.[]|select(.info.props."media.class"=="Audio/Sink")|.id' | xargs) )
-    local _currentid=$(wpctl inspect @DEFAULT_SINK@ | head -n 1 | cut -d, -f1 | cut -d' ' -f2)
-    local _size=${#_sinkids[@]}
-    local _index=-1
-    local _targetid
-    local _desc
+    local sinkids=( $(pw-dump | jq '.[]|select(.info.props."media.class"=="Audio/Sink")|.id' | xargs) )
+    local currentid=$(wpctl inspect @DEFAULT_SINK@ | head -n 1 | cut -d, -f1 | cut -d' ' -f2)
+    local size=${#sinkids[@]}
+    local index=-1
+    local targetid
+    local desc
 
-    for _i in "${!_sinkids[@]}"; do
-        if [[ "${_sinkids[$_i]}" == "${_currentid}" ]]; then
-            _index=${_i}
+    for i in "${!sinkids[@]}"; do
+        if [[ "${sinkids[$i]}" == "${currentid}" ]]; then
+            index=${i}
             break
         fi
     done
 
-    _index=$(( ${_index} + 1 ))
-    (( _index >= _size )) && _index=0
-    _targetid=${_sinkids[$_index]}
-    _desc=$(pw-dump | jq -r --argjson id ${_targetid} '.[]|select(.id==$id)|.info.props."node.description"')
+    index=$(( ${index} + 1 ))
+    (( index >= size )) && index=0
+    targetid=${sinkids[$index]}
+    desc=$(pw-dump | jq -r --argjson id ${targetid} '.[]|select(.id==$id)|.info.props."node.description"')
 
-    wpctl set-default ${_targetid}
-    notify-send -a $(basename $0) -t 2000 "Audio Sink" "${_desc}"
+    wpctl set-default ${targetid}
+    notify-send -a $(basename $0) -t 2000 "Audio Sink" "${desc}"
 }
 
 #################################################################################
@@ -92,34 +90,34 @@ sink-toggle() {
 #################################################################################
 
 scratchpad-count() {
-    local _count=$(swaymsg -t get_tree | grep -c '"scratchpad_state": "fresh"')
-    [[ "${_count}" =~ ^[1-9]+[0-9]*$ ]] && echo "[Scratch: ${_count}] " || echo ""
+    local count=$(swaymsg -t get_tree | grep -c '"scratchpad_state": "fresh"')
+    [[ "${count}" =~ ^[1-9]+[0-9]*$ ]] && echo "[Scratch: ${count}] " || echo ""
 }
 
 muted-label() {
     command-check wpctl
-    local _label
-    local _vol
+    local label
+    local vol
 
-    _vol="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
-    [[ "${_vol}" =~ MUTED ]] && _label="Speaker"
+    vol="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
+    [[ "${vol}" =~ MUTED ]] && label="Speaker"
 
-    _vol="$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
-    if [[ "${_vol}" =~ MUTED ]]; then
-       [[ -n "${_label}" ]] && _label+=",Mic" || _label="Mic"
+    vol="$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
+    if [[ "${vol}" =~ MUTED ]]; then
+       [[ -n "${label}" ]] && label+=",Mic" || label="Mic"
     fi
 
-    [[ -n "${_label}" ]] && echo "[Muted:${_label}] " || echo ""
+    [[ -n "${label}" ]] && echo "[Muted:${label}] " || echo ""
 }
 
 bar-status() {
-    local _str
+    local str
     while true; do
-        _str=""
-        _str+="$(scratchpad-count)"
-        _str+="$(muted-label)"
-        _str+="$(date '+%a %b.%d %H:%M')"
-        printf "%s \n" "${_str}"
+        str=""
+        str+="$(scratchpad-count)"
+        str+="$(muted-label)"
+        str+="$(date '+%a %b.%d %H:%M')"
+        printf "%s \n" "${str}"
         sleep 0.1
     done
 }
@@ -161,21 +159,21 @@ grimshot-check() {
     command -v grimshot.sh &>/dev/null || errf "command not found: grimshot\n"
 }
 
-_save_path=~/Pictures/Screenshot.$(date +%y%m%d.%H%M%S).$(date +%N|cut -c1).png
+save_path=~/Pictures/Screenshot.$(date +%y%m%d.%H%M%S).$(date +%N|cut -c1).png
 
 screenshot-fullscreen() {
     grim-check
-    grim ${_save_path}
+    grim ${save_path}
 }
 
 screenshot-area() {
     grim-check && grimshot-check
-    grimshot.sh savecopy area ${_save_path}
+    grimshot.sh savecopy area ${save_path}
 }
 
 screenshot-window() {
     grim-check && grimshot-check
-    grimshot.sh savecopy window ${_save_path}
+    grimshot.sh savecopy window ${save_path}
 }
 
 #################################################################################
@@ -188,18 +186,18 @@ gsettings-check() {
 
 gsettings-icon() {
     gsettings-check
-    local _name="${1}"
-    [[ -n "${_name}" ]] || errf "icon theme undefined\n"
-    [[ -d "/usr/share/icons/${_name}" ]] || errf "icon theme not found: ${_name}\n"
-    gsettings set org.gnome.desktop.interface icon-theme "${_name}"
+    local name="${1}"
+    [[ -n "${name}" ]] || errf "icon theme undefined\n"
+    [[ -d "/usr/share/icons/${name}" ]] || errf "icon theme not found: ${name}\n"
+    gsettings set org.gnome.desktop.interface icon-theme "${name}"
 }
 
 gsettings-gtk() {
     gsettings-check
-    local _name="${1}"
-    [[ -n "${_name}" ]] || errf "gtk theme undefined\n"
-    [[ -d "/usr/share/themes/${_name}" ]] || errf "gtk theme not found: ${_name}\n"
-    gsettings set org.gnome.desktop.interface gtk-theme "${_name}"
+    local name="${1}"
+    [[ -n "${name}" ]] || errf "gtk theme undefined\n"
+    [[ -d "/usr/share/themes/${name}" ]] || errf "gtk theme not found: ${name}\n"
+    gsettings set org.gnome.desktop.interface gtk-theme "${name}"
 }
 
 #################################################################################
@@ -225,9 +223,9 @@ case "${1}" in
         declare -F | awk '{print "  " $3}'
         ;;
     *)
-        _command="${1}"
+        command="${1}"
         shift
-        ${_command} "${@}"
+        ${command} "${@}"
         ;;
 esac
 

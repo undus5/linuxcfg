@@ -17,6 +17,6 @@ command -v ${polkit_exec} &>/dev/null \
     && ! pidof ${polkit_name} &>/dev/null \
     && nohup ${polkit_exec} &>/dev/null &
 
-command -v wlstart-custom.sh &>/dev/null \
-    && nohup wlstart-custom.sh &>/dev/null &
+command -v wlstart-extra.sh &>/dev/null \
+    && nohup wlstart-extra.sh &>/dev/null &
 
