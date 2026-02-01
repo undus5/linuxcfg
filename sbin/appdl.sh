@@ -9,6 +9,7 @@ _fox() { echo "https://www.waterfox.com/download/"; }
 _vsc() { echo "https://github.com/VSCodium/vscodium/releases/latest"; }
 _subl() { echo "https://www.sublimetext.com/download"; }
 _stud() { echo "https://developer.android.com/studio/"; }
+_npn() { echo "https://github.com/dail8859/NotepadNext/releases/latest"; }
 
 _fileb() { echo "https://github.com/filebrowser/filebrowser/releases/latest"; }
 _halloy() { echo "https://github.com/squidowl/halloy/releases/latest"; }
