@@ -10,18 +10,18 @@ command -v aria2c &>/dev/null || aria2c
 
 start() {
     pidof aria2c &>/dev/null && exit 0
-    local _ddir=$(realpath ~/Downloads)
+    local ddir=$(realpath ~/Downloads)
     # best_aria2, all_aria2, http_aria2, nohttp_aria2
-    local _trackers=$(curl -sL "https://cf.trackerslist.com/best_aria2.txt")
-    local _exec="aria2c --enable-rpc=true --rpc-secret=aria2rpc"
-    _exec+=" --rpc-listen-port=6800 --bt-stop-timeout=3600"
-    _exec+=" --dir=${_ddir} --bt-tracker=${_trackers}"
-    nohup ${_exec} &>/dev/null &
+    local trackers=$(curl -sL "https://cf.trackerslist.com/best_aria2.txt")
+    local exec="aria2c --enable-rpc=true --rpc-secret=aria2rpc"
+    exec+=" --rpc-listen-port=6800 --bt-stop-timeout=3600"
+    exec+=" --dir=${ddir} --bt-tracker=${trackers}"
+    nohup ${exec} &>/dev/null &
 }
 
 stop() {
-    local _pid=$(pidof aria2c)
-    [[ -z "${_pid}" ]] || echo "${_pid}" | xargs kill -9 &>/dev/null
+    local pid=$(pidof aria2c)
+    [[ -z "${pid}" ]] || echo "${pid}" | xargs kill -9 &>/dev/null
 }
 
 case ${1} in
