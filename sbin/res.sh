@@ -9,7 +9,7 @@ vdir=${resdir}
 [[ -d ${vdir} ]] || errf "directory not found: ${vdir}\n"
 port=8086
 
-play() {
+play_media() {
     local request="${1}"
     local relpath=${request:6:-1}
     local fullpath=${vdir}/${relpath}
@@ -30,18 +30,48 @@ play() {
     esac
 }
 
+check_server() {
+    local ppid=$(pgrep $(basename ${0}) | head -n1 | awk '{print $1}')
+    local ncid=$(pgrep nc -P ${ppid} | head -n1 | awk '{print $1}')
+    [[ -n ${ncid} ]] && exit 0
+}
+
+run_server() {
+    check_server
+    # need 'openbsd-netcat' package
+    while true; do
+        echo -e "HTTP/1.1 200 OK\r\n" | nc -lN ${port} | \
+            grep ^GET | awk '{print $2}' | xargs ${0} play
+    done
+}
+
+kill_server() {
+    local ppid=$(pgrep $(basename ${0}) | head -n1 | awk '{print $1}')
+    local ncid=$(pgrep nc -P ${ppid} | head -n1 | awk '{print $1}')
+    [[ -n ${ncid} && -n ${ppid} ]] && kill -9 ${ppid}
+    [[ -n ${ncid} ]] && kill -9 ${ncid}
+}
+
+start_daemon() { nohup ${0} run &>/dev/null & }
+
 case ${1} in
-    s|server)
-        # need 'openbsd-netcat' package
-        while true; do
-            echo -e "HTTP/1.1 200 OK\r\n" | nc -lN ${port} | \
-                grep ^GET | awk '{print $2}' | xargs ${0} play
-        done
+    ""|start)
+        start_daemon
         ;;
-    p|play)
-        play ${2}
+    stop)
+        kill_server
+        ;;
+    restart)
+        kill_server; start_daemon
+        ;;
+    run)
+        run_server
+        ;;
+    play)
+        shift; play_media "${@}"
         ;;
     *)
-        errf "Usage: $(basename ${0}) <s|p>\n"
+        errf "Usage: $(basename ${0}) <h|s|k>\n"
         ;;
 esac
+
