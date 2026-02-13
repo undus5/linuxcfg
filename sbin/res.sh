@@ -21,11 +21,11 @@ play_media() {
             ;;
         manga|cg)
             [[ -d ${fullpath} ]] || errf "directory not found: ${fullpath}\n"
-            if [[ -f ${pic0} ]]; then
-                nohup oculante ${fullpath}/_000.jpg &>/dev/null &
-            elif [[ -f ${pic1} ]]; then
-                nohup oculante ${fullpath}/_001.jpg &>/dev/null &
-            fi
+            local pic0=${fullpath}/_000.jpg
+            local pic1=${fullpath}/_001.jpg
+            local picf=""
+            [[ -f "${pic0}" ]] && picf="${pic0}" || picf="${pic1}"
+            nohup swayimg "${picf}" "${fullpath}" &>/dev/null &
             ;;
     esac
 }
