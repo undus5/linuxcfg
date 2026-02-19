@@ -1,7 +1,7 @@
 #!/bin/bash
 
 kver="${1}"
-kdir="${2}"
+dest="${2}"
 kimg="/usr/lib/modules/${kver}/vmlinuz"
 [[ -f "${kimg}" ]] || exit 1
 
@@ -13,7 +13,7 @@ dracut-install() {
     dracut --force --hostonly --no-hostonly-cmdline --kver "${kver}" "${initrd}"
 }
 
-[[ -d "${kdir}" ]] && dracut-install "${kdir}" && exit 0
+[[ -d "${dest}" ]] && dracut-install "${dest}" && exit 0
 
 findmnt /a &>/dev/null || dracut-install /efi/a
 findmnt /b &>/dev/null || dracut-install /efi/b
