@@ -26,5 +26,5 @@ Target = dracut
 [Action]
 Description = Updating initramfs with dracut
 When = PostTransaction
-Exec = /usr/local/sbin/dracut-install.sh
+Exec = /etc/pacman.d/scripts/dracut-install-alpm.sh
 NeedsTargets

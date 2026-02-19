@@ -1,12 +1,9 @@
 #!/bin/bash
 
-set -e
-
 kver="${1}"
 kdir="${2}"
 kimg="/usr/lib/modules/${kver}/vmlinuz"
-[[ -f "${kimg}" ]] || kver=$(uname -r)
-kimg="/usr/lib/modules/${kver}/vmlinuz"
+[[ -f "${kimg}" ]] || exit 1
 
 dracut-install() {
     local stubdir="${1}"
