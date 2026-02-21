@@ -47,6 +47,7 @@ draw() { apprun "appimages/drawio.AppImage"; }
 kden() { apprun "appimages/kdenlive.AppImage"; }
 send() { apprun "appimages/localsend.AppImage"; }
 dian() { apprun "appimages/obsidian.AppImage"; }
+pint() { apprun "appimages/pinta.AppImage"; }
 
 pzip() { apprun "peazip/peazip"; }
 

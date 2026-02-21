@@ -24,9 +24,13 @@ send() { echo "https://localsend.org/download"; }
 navi() { echo "https://www.navicat.com/en/download/navicat-premium-lite"; }
 dian() { echo "https://github.com/obsidianmd/obsidian-releases/releases/latest"; }
 offi() { echo "https://github.com/ONLYOFFICE/appimage-desktopeditors/releases/latest"; }
+pint() { echo "https://github.com/pkgforge-dev/Pinta-AppImage/releases/latest"; }
 
 eden() { echo "https://github.com/eden-emulator/Releases/releases/latest"; }
 citr() { echo "https://git.citron-emu.org/Citron/Emulator/releases"; }
+
+plex() { echo "https://github.com/IBM/plex/releases"; }
+mapl() { echo "https://github.com/subframe7536/maple-font/releases"; }
 
 print_help() {
     printf "Usage: $(basename $0) <app_name>\n"
