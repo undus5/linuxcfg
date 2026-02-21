@@ -1,11 +1,10 @@
 [Desktop Entry]
 Version=1.0
-Name=Brave
+Name=Ungoogled Chromium
 StartupNotify=true
-StartupWMClass=brave-browser
-TryExec=/home/u/a/apps/brave-browser/brave-browser
-Exec=/home/u/a/apps/brave-browser/brave-browser %U
-Icon=/home/u/a/apps/brave-browser/product_logo_256.png
+StartupWMClass=chromium
+Exec=bash -c '~/a/apps/ungoogled-chromium/chrome %U'
+Icon=chromium.png
 Terminal=false
 Type=Application
 Categories=Network;WebBrowser;

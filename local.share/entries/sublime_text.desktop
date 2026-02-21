@@ -2,10 +2,11 @@
 Name=Sublime Text
 GenericName=Text Editor
 Comment=Sophisticated text editor for code, markup and prose
-Exec=/home/u/a/apps/sublime_text/sublime_text %F
-Icon=/home/u/a/apps/sublime_text/Icon/128x128/sublime-text.png
+Exec=bash -c '~/a/apps/sublime_text/sublime_text %F'
+Icon=sublime-text
 Terminal=false
 Type=Application
 MimeType=text/plain;
 Categories=TextEditor;Development;
 StartupNotify=true
+

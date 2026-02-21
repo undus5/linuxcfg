@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=NotepadNext
 GenericName=Text Editor
-Exec=/home/u/a/apps/appimages/notepadnext.AppImage %F
-Icon=/home/u/a/local.share/icons/local/notepadnext.png
+Exec=bash -c '~/a/apps/appimages/notepadnext.AppImage %F'
+Icon=notepadnext
 Terminal=false
 Type=Application
 MimeType=text/plain;

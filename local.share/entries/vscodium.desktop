@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=VSCodium
+Exec=bash -c '~/a/apps/vscodium/codium %F'
+Icon=vscodium
+StartupNotify=true
+Type=Application
+Categories=TextEditor;Development;
+
