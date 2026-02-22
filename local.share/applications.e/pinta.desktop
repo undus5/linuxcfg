@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pinta
+Icon=pinta
+Exec=bash -c ~/a/apps/appimages/Pinta.AppImage
+Terminal=false
+Type=Application
+MimeType=text/plain;
+Categories=Graphics;
+StartupNotify=true
+

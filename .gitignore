@@ -1,7 +1,10 @@
-apps/
-bin/
-local.share/fonts/
-local.share/icons/
-ports/
-usr.local/cfg/
+/apps/
+/bin/
+/icons/*
+!/icons/hicolor/
+/local.share/fonts/
+/local.share/icons/
+/ports/
+/usr.local/bin/
+/usr.local/cfg/
 

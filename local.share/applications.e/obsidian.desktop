@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Sublime Text
-Icon=sublime-text
-Exec=bash -c '~/a/apps/sublime_text/sublime_text $@' sublime_text %F
+Name=Obsidian
+Icon=obsidian
+Exec=bash -c ~/a/apps/appimages/Obsidian.AppImage
 Terminal=false
 Type=Application
 MimeType=text/plain;

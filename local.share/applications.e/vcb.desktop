@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=VCB
+Exec=bash -c ~/a/apps/vcb/vcb.x86_64
+Icon=vcb
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true
+

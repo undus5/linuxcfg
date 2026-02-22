@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=OnlyOffice
-Version=1.0
-Exec=bash -c '~/a/apps/appimages/onlyoffice.AppImage %F'
+Name=ONLYOFFICE
 Icon=onlyoffice
-StartupNotify=true
+Exec=bash -c '~/a/apps/appimages/ONLYOFFICE.AppImage %F'
+Terminal=false
 Type=Application
 Categories=Office;
 MimeType=application/msword;application/vnd.ms-excel;application/vnd.ms-powerpoint;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.openxmlformats-officedocument.presentationml.presentation;
+StartupNotify=true
 

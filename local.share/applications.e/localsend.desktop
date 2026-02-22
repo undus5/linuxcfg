@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=LocalSend
+Icon=localsend
+Exec=bash -c ~/a/apps/appimages/LocalSend.AppImage
+Terminal=false
+Type=Application
+Categories=Network;Utility;
+StartupNotify=true
+

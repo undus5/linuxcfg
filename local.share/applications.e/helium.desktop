@@ -1,8 +1,7 @@
 [Desktop Entry]
-Name=Brave Browser
-Icon=brave-browser
-StartupWMClass=brave-browser
-Exec=bash -c '~/a/apps/brave-browser/brave-browser $@' brave-browser %U
+Name=Helium
+Icon=helium
+Exec=bash -c '~/a/apps/helium/helium $@' helium %U
 Terminal=false
 Type=Application
 Categories=Network;WebBrowser;

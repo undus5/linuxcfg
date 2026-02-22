@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tor Browser
+Icon=tor-browser
+Exec=bash -c ~/a/apps/tor-browser/Browser/start-tor-browser
+Type=Application
+Categories=Network;WebBrowser;Security;
+StartupNotify=true
+StartupWMClass=Tor Browser
+

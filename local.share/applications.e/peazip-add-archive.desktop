@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=PeaZip Add Archive
-Comment=Add files and folders to archive with PeaZip
-Exec=bash -c '~/a/apps/peazip/peazip -add2archive %F'
 Icon=peazip-add
+Exec=bash -c '~/a/apps/peazip/peazip -add2archive %F'
+Terminal=false
 Type=Application
 Categories=Utility;Archiving;Compression;
-Keywords=zip;rar;tar;extract;unpack;
 MimeType=application/octet-stream;
+StartupNotify=true
 
