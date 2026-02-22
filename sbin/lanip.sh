@@ -1,13 +1,10 @@
 #!/bin/bash
 
 errf() { printf "${@}" >&2; exit 1; }
+chkcmd() { command -v "${@}" &>/dev/null; }
 
-which evars.sh &>/dev/null || errf "evars.sh not found\n"
+chkcmd evars.sh || errf "evars.sh not found\n"
 source $(which evars.sh)
-
-command_check() {
-    command -v ${1} &>/dev/null || errf "command not found: ${1}\n"
-}
 
 devname="${1}"
 [[ -n "${devname}" ]] || errf "Usage: $(basename ${0}) <device_name>\n"
@@ -15,7 +12,7 @@ devname="${1}"
 declare -n devmac=${devname}
 [[ -n "${devmac}" ]] || errf "undefined device: ${devname}\n"
 
-command_check arp-scan
+chkcmd arp-scan || errf "command not found: arp-scan\n"
 # ip link | grep brnat | grep -q "state UP" \
 #     && arp-scan -x -l -I brnat | grep ${devmac} | awk '{ print $1 }'
 ip link | grep brlan | grep -q "state UP" \

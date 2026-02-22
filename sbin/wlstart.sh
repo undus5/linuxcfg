@@ -1,22 +1,18 @@
 #!/usr/bin/bash
 
-command -v kanshi &>/dev/null \
-    && ! pidof kanshi &>/dev/null \
-    && nohup kanshi &>/dev/null &
+chkcmd() { command -v "${@}" &>/dev/null; }
+chksrv() { pidof "${@}" &>/dev/null; }
+bkr() { nohup "${@}" &>/dev/null & }
 
-command -v fcitx5 &>/dev/null \
-    && ! pidof fcitx5 &>/dev/null \
-    && nohup fcitx5 -d -r &>/dev/null &
+chkcmd kanshi && ! chksrv kanshi && bkr hanshi
+chkcmd fcitx5 && ! chksrv fcitx5 && bkr fcitx5 -d -r
 
 polkit_name=polkit-mate-authentication-agent-1
 polkit_arch=/usr/lib/mate-polkit/${polkit_name}
 polkit_fedora=/usr/libexec/${polkit_name}
 [[ -f "${polkit_arch}" ]] && polkit_exec="${polkit_arch}"
 [[ -f "${polkit_fedora}" ]] && polkit_exec="${polkit_fedora}"
-command -v ${polkit_exec} &>/dev/null \
-    && ! pidof ${polkit_name} &>/dev/null \
-    && nohup ${polkit_exec} &>/dev/null &
+chkcmd ${polkit_exec} && ! chksrv ${polkit_name} && bkr ${polkit_exec}
 
-command -v wlstart-extra.sh &>/dev/null \
-    && nohup wlstart-extra.sh &>/dev/null &
+chkcmd wlstart-extra.sh && bkr wlstart-extra.sh
 

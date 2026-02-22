@@ -1,16 +1,15 @@
 #!/usr/bin/bash
 
-sdir=$(dirname $(realpath ${BASH_SOURCE[0]}))
-adir=$(realpath ${sdir}/../apps/filebrowser)
-
-port=8182
 sharedir=$(realpath ~/Public)
+port=8182
+dbfile=~/b/sites/filebrowser/filebrowser.db
 
-exec="${adir}/filebrowser"
-args="-d ${adir}/filebrowser.db -p ${port} -r ${sharedir}"
+chksrv() { pidof "${@}" &>/dev/null; }
+bgr() { nohup "${@}" &>/dev/null & }
 
 start() {
-    pidof filebrowser &>/dev/null || nohup ${exec} ${args} &>/dev/null &
+    local exec="filebrowser -d ${dbfile} -p ${port} -r ${sharedir}"
+    chksrv filebrowser || bgr ${exec}
 }
 
 stop() {
@@ -29,7 +28,7 @@ case ${1} in
         ;;
     --)
         shift
-        ${exec} ${@}
+        filebrowser ${@}
         ;;
     *)
         printf "Usage: $(basename $0) <start|stop|restart|-->\n"

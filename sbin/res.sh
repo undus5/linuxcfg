@@ -1,8 +1,10 @@
 #!/usr/bin/bash
 
 errf() { printf "${@}" >&2; exit 1; }
+chkcmd() { command -v "${@}" &>/dev/null; }
+bgr() { nohup "${@}" &>/dev/null & }
 
-which evars.sh &>/dev/null || errf "evars.sh not found\n"
+chkcmd evars.sh || errf "evars.sh not found\n"
 source $(which evars.sh)
 
 vdir=${resdir}
@@ -17,7 +19,7 @@ play_media() {
 
     case ${section} in
         video|anime3d)
-            nohup mpv --player-operation-mode=pseudo-gui "${fullpath}"* &>/dev/null &
+            bgr mpv --player-operation-mode=pseudo-gui "${fullpath}"*
             ;;
         manga|cg)
             [[ -d ${fullpath} ]] || errf "directory not found: ${fullpath}\n"
@@ -25,7 +27,7 @@ play_media() {
             local pic1=${fullpath}/_001.jpg
             local picf=""
             [[ -f "${pic0}" ]] && picf="${pic0}" || picf="${pic1}"
-            nohup swayimg "${picf}" "${fullpath}" &>/dev/null &
+            bgr swayimg "${picf}" "${fullpath}"
             ;;
     esac
 }
@@ -52,7 +54,7 @@ kill_server() {
     [[ -n ${ncid} ]] && kill -9 ${ncid}
 }
 
-start_daemon() { nohup ${0} run &>/dev/null & }
+start_daemon() { bgr ${0} run; }
 
 case ${1} in
     ""|start)

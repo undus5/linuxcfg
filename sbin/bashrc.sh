@@ -11,5 +11,10 @@ export XMODIFIERS=@im=fcitx
 alias cdd="cd ~/Downloads"
 alias ywd='pwd | tr -d "\n" | wl-copy'
 
+errf() { printf "${@}" >&2; exit 1; }
+bgr() { nohup "${@}" &>/dev/null & }
+chksrv() { pidof "${@}" &>/dev/null; }
+chkcmd() { command -v "${@}" &>/dev/null; }
+
 # [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$XDG_VTNR" -eq 1 ]] && exec sway
 

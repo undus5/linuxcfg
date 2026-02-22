@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-errf() { printf "${1}" >&2 && exit 1; }
+errf() { printf "${@}" >&2; exit 1; }
+chkcmd() { command -v "${@}" &>/dev/null; }
 
-command -v magick &>/dev/null || errf "command not found: magick\n"
+chkcmd magick || errf "command not found: magick\n"
 
 img=${1}
 
-[[ -f "${img}" ]] || errf "file not found: ${img}"
+[[ -f "${img}" ]] || errf "file not found: ${img}\n"
 
 filename=$(basename "${img}")
 basename="${filename%.*}"

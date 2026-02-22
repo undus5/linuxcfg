@@ -3,6 +3,7 @@
 # https://github.com/francma/wob
 # https://gitlab.com/wef/dotfiles/-/blob/master/bin/mywob
 
+chkcmd() { command -v "${@}" &>/dev/null; }
 print_help() { printf "Usage: $(basename $0) <integer>\n"; }
 
 case "$1" in
@@ -14,7 +15,7 @@ case "$1" in
         ;;
 esac
 
-[[ "$WAYLAND_DISPLAY" ]] || (command -v wob &>/dev/null) || exit 0
+[[ "$WAYLAND_DISPLAY" ]] || chkcmd wob || exit 0
 [[ "${1}" ]] && [[ "${1}" =~ ^[0-9]{1,3}$ ]] || exit 0
 
 wob_pipe=~/.cache/${WAYLAND_DISPLAY}.wob

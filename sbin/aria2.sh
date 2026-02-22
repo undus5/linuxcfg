@@ -1,22 +1,22 @@
 #!/bin/bash
 
-eprintf() {
-    printf "${1}" >&2 && exit 1
-}
+errf() { printf "${@}" >&2; exit 1; }
+bgr() { nohup "${@}" &>/dev/null & }
+chksrv() { pidof "${@}" &>/dev/null; }
+chkcmd() { command -v "${@}" &>/dev/null; }
 
-[[ ${EUID} == 0 ]] && eprintf "abort for root user\n"
-command -v aria2c &>/dev/null || aria2c
-
+[[ ${EUID} == 0 ]] && errf "abort for root user\n"
+chkcmd aria2c || aria2c
 
 start() {
-    pidof aria2c &>/dev/null && exit 0
+    chksrv aria2c && exit 0
     local ddir=$(realpath ~/Downloads)
     # best_aria2, all_aria2, http_aria2, nohttp_aria2
     local trackers=$(curl -sL "https://cf.trackerslist.com/best_aria2.txt")
     local exec="aria2c --enable-rpc=true --rpc-secret=aria2rpc"
     exec+=" --rpc-listen-port=6800 --bt-stop-timeout=3600"
     exec+=" --dir=${ddir} --bt-tracker=${trackers}"
-    nohup ${exec} &>/dev/null &
+    bgr ${exec}
 }
 
 stop() {
@@ -36,6 +36,7 @@ case ${1} in
         start
         ;;
     *)
-        eprintf "Usage: $(basename ${0}) <start|stop|restart>\n"
+        errf "Usage: $(basename ${0}) <start|stop|restart>\n"
         ;;
 esac
+

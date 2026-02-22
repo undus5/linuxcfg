@@ -1,33 +1,27 @@
 #!/bin/bash
 
 mium() { echo "https://ungoogled-software.github.io/ungoogled-chromium-binaries/"; }
-brv() { echo "https://github.com/brave/brave-browser/releases/latest"; }
+brav() { echo "https://github.com/brave/brave-browser/releases/latest"; }
 heli() { echo "https://github.com/imputnet/helium-linux/releases/latest"; }
-zen() { echo "https://zen-browser.app/download/"; }
 fox() { echo "https://www.waterfox.com/download/"; }
 
 vsc() { echo "https://github.com/VSCodium/vscodium/releases/latest"; }
 subl() { echo "https://www.sublimetext.com/download"; }
-stud() { echo "https://developer.android.com/studio/"; }
-npn() { echo "https://github.com/dail8859/NotepadNext/releases/latest"; }
+droid() { echo "https://developer.android.com/studio/"; }
+txt() { echo "https://github.com/dail8859/NotepadNext/releases/latest"; }
 
-fileb() { echo "https://github.com/filebrowser/filebrowser/releases/latest"; }
-halloy() { echo "https://github.com/squidowl/halloy/releases/latest"; }
-lg() { echo "https://looking-glass.io/downloads"; }
-los() { echo "https://github.com/mifi/lossless-cut/releases/latest"; }
+file() { echo "https://github.com/filebrowser/filebrowser/releases/latest"; }
+irc() { echo "https://github.com/squidowl/halloy/releases/latest"; }
+glass() { echo "https://looking-glass.io/downloads"; }
+vcut() { echo "https://github.com/mifi/lossless-cut/releases/latest"; }
 pzip() { echo "https://peazip.github.io/peazip-linux.html"; }
-vent() { echo "https://ventoy.net/en/download.html"; }
+vtoy() { echo "https://ventoy.net/en/download.html"; }
 
 draw() { echo "https://github.com/jgraph/drawio-desktop/releases/latest"; }
-kden() { echo "https://kdenlive.org/download/"; }
-send() { echo "https://localsend.org/download"; }
-navi() { echo "https://www.navicat.com/en/download/navicat-premium-lite"; }
+send() { echo "https://github.com/localsend/localsend/releases/latest"; }
 dian() { echo "https://github.com/obsidianmd/obsidian-releases/releases/latest"; }
-offi() { echo "https://github.com/ONLYOFFICE/appimage-desktopeditors/releases/latest"; }
+only() { echo "https://github.com/ONLYOFFICE/appimage-desktopeditors/releases/latest"; }
 pint() { echo "https://github.com/pkgforge-dev/Pinta-AppImage/releases/latest"; }
-
-eden() { echo "https://github.com/eden-emulator/Releases/releases/latest"; }
-citr() { echo "https://git.citron-emu.org/Citron/Emulator/releases"; }
 
 plex() { echo "https://github.com/IBM/plex/releases"; }
 mapl() { echo "https://github.com/subframe7536/maple-font/releases"; }
@@ -46,5 +40,7 @@ funcname=${1}
 funclist | grep -q "${funcname} " && url=$(${funcname})
 [[ -n "${url}" ]] || print_help
 
-xdg-open "${url}"
+sdir=$(dirname $(realpath ${BASH_SOURCE[0]}))
+exec=${sdir}/../apps/brave-browser/brave-browser
+${exec} "${url}"
 

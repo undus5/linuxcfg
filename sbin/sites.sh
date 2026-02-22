@@ -1,30 +1,28 @@
 #!/bin/bash
 
 errf() { printf "${@}" >&2; exit 1; }
+bgr() { nohup "${@}" &>/dev/null & }
+chkcmd() { command -v "${@}" &>/dev/null; }
 
-which evars.sh &>/dev/null || errf "evars.sh not found\n"
+chkcmd evars.sh || errf "evars.sh not found\n"
 source $(which evars.sh)
 
 sdir=${sitesdir}
 [[ -d "${sdir}" ]] || errf "directory not found: ${sdir}\n"
-_exec="hugo -D --watch"
+exec="hugo -D --watch"
 
 stop() {
-    local _pids=$(pidof hugo)
-    [[ -n "${_pids}" ]] && echo "${_pids}" | xargs kill
+    local pids=$(pidof hugo)
+    [[ -n "${pids}" ]] && echo "${pids}" | xargs kill
 }
 
 start() {
-    local _pids=$(pidof hugo)
-    [[ -n "${_pids}" ]] && exit 0
-    cd ${sdir}/blog
-    nohup ${_exec} &>/dev/null &
-    cd ${sdir}/drafts
-    nohup ${_exec} &>/dev/null &
-    cd ${sdir}/res
-    nohup ${_exec} &>/dev/null &
-    cd ${sdir}/hugo-pure
-    nohup ./demo.sh -b --watch &>/dev/null &
+    local pids=$(pidof hugo)
+    [[ -n "${pids}" ]] && exit 0
+    cd ${sdir}/blog && bgr ${exec}
+    cd ${sdir}/drafts && bgr ${exec}
+    cd ${sdir}/res && bgr ${exec}
+    cd ${sdir}/hugo-pure && bgr ./demo.sh -b --watch
 }
 
 case ${1} in
