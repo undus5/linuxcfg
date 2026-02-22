@@ -18,7 +18,7 @@ Usage:
 (user)$ echo 'source ~/a/sbin/bashrc.sh' >> ~/.bashrc
 ```
 
-Custom apps: `~/a/local.share/apps/`\
+Custom apps: `~/a/apps/`\
 Custom fonts: `~/a/local.share/fonts/`\
-Custom icons: `~/a/local.share/icons/hicolor/128x128/apps/`
+Custom icons: `~/a/icons/hicolor/256x256/apps/`
 
