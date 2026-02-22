@@ -10,6 +10,16 @@ command-check() {
 }
 
 #################################################################################
+# reload wayland compositor
+#################################################################################
+
+reload() {
+    [[ -n "${SWAYSOCK}" ]] && swaymsg reload
+    [[ -n "${LABWC_PID}" ]] && labwc -r
+    pidof kanshi &>/dev/null && sleep 0.1 && kanshictl reload
+}
+
+#################################################################################
 # volume control
 # https://wiki.archlinux.org/title/WirePlumber
 #################################################################################
@@ -86,7 +96,7 @@ sink-toggle() {
 }
 
 #################################################################################
-# sway status
+# status bar content
 #################################################################################
 
 scratchpad-count() {
@@ -204,13 +214,11 @@ gsettings-gtk() {
 # apps
 #################################################################################
 
-terminal() {
-    open-terminal-here.sh
-}
+terminal() { open-terminal-here.sh; }
 
-dynamic-menu() {
-    wmenu-run -b -f 'monospace bold 18' "${@}"
-}
+dynamic-menu() { wmenu-run -b -f 'monospace bold 18' "${@}"; }
+
+app-launcher() { fuzzel; }
 
 #################################################################################
 # dispatcher
