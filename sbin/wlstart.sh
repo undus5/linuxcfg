@@ -14,5 +14,12 @@ polkit_fedora=/usr/libexec/${polkit_name}
 [[ -f "${polkit_fedora}" ]] && polkit_exec="${polkit_fedora}"
 chkcmd ${polkit_exec} && ! chksrv ${polkit_name} && bkr ${polkit_exec}
 
-chkcmd wlstart-extra.sh && bkr wlstart-extra.sh
+chkcmd evars.sh && source $(which evars.sh)
+if [[ -d "${bgdir}" ]]; then
+    chksrv swaybg && pidof swaybg | xargs kill -9
+    bgr swaybg \
+        -o "${dell27}" -m fill -i "${bgdir}/dell27.png" \
+        -o "${port15}" -m fill -i "${bgdir}/port15.png" \
+        -o "${usbhdmi}" -m fill -i "${bgdir}/usbhdmi.png"
+fi
 
