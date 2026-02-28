@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=VSCodium
 Icon=vscodium
-Exec=bash -c '~/a/apps/VSCodium/codium $@' vscodium %F
+Exec=bash -c '~/a/apps/VSCodium/codium "$@"' vscodium %F
 Terminal=false
 Type=Application
 Categories=TextEditor;Development;

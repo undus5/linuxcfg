@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Helium
 Icon=helium
-Exec=bash -c '~/a/apps/helium/helium $@' helium %U
+Exec=bash -c '~/a/apps/helium/helium "$@"' helium %U
 Terminal=false
 Type=Application
 Categories=Network;WebBrowser;

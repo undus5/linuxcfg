@@ -2,7 +2,7 @@
 Name=Ungoogled Chromium
 Icon=chromium
 StartupWMClass=chromium
-Exec=bash -c '~/a/apps/ungoogled-chromium/chrome $@' ungoogled-chromium %U
+Exec=bash -c '~/a/apps/ungoogled-chromium/chrome "$@"' ungoogled-chromium %U
 Terminal=false
 Type=Application
 Categories=Network;WebBrowser;

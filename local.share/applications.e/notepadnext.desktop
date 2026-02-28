@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=NotepadNext
 Icon=notepadnext
-Exec=bash -c '~/a/apps/appimages/NotepadNext.AppImage $@' notepadnext %F
+Exec=bash -c '~/a/apps/appimages/NotepadNext.AppImage "$@"' notepadnext %F
 Terminal=false
 Type=Application
 MimeType=text/plain;

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=PeaZip Extract Smart
 Icon=peazip-extract
-Exec=bash -c '~/a/apps/peazip/peazip -ext2folder %F'
+Exec=bash -c '~/a/apps/peazip/peazip -ext2folder "$@"' peazip %F
 Terminal=false
 Type=Application
 Categories=Utility;Archiving;Compression;

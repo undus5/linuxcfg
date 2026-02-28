@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Sublime Text
 Icon=sublime-text
-Exec=bash -c '~/a/apps/sublime_text/sublime_text $@' sublime_text %F
+Exec=bash -c '~/a/apps/sublime_text/sublime_text "$@"' sublime_text %F
 Terminal=false
 Type=Application
 MimeType=text/plain;

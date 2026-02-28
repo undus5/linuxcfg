@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ONLYOFFICE
 Icon=onlyoffice
-Exec=bash -c '~/a/apps/appimages/ONLYOFFICE.AppImage %F'
+Exec=bash -c '~/a/apps/appimages/ONLYOFFICE.AppImage "$@"' onlyoffice %F
 Terminal=false
 Type=Application
 Categories=Office;
