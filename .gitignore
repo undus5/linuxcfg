@@ -7,4 +7,6 @@
 /ports/
 /usr.local/bin/
 /usr.local/cfg/
+*.exe
+*.dll
 
