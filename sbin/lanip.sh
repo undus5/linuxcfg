@@ -12,6 +12,7 @@ devname="${1}"
 declare -n devmac=${devname}
 [[ -n "${devmac}" ]] || errf "undefined device: ${devname}\n"
 
+# setcap cap_net_raw=eip /usr/bin/arp-scan
 chkcmd arp-scan || errf "command not found: arp-scan\n"
 # ip link | grep brnat | grep -q "state UP" \
 #     && arp-scan -x -l -I brnat | grep ${devmac} | awk '{ print $1 }'
