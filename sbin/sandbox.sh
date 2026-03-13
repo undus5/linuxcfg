@@ -23,6 +23,7 @@ bwrap \
   --ro-bind /sys /sys \
   --ro-bind /usr /usr \
   --dev /dev \
+  --dev-bind /dev/dri /dev/dri \
   --proc /proc \
   --tmpfs /tmp \
   --unshare-all \
