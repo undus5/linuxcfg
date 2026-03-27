@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mium() { echo "https://ungoogled-software.github.io/ungoogled-chromium-binaries/"; }
+mium-store() { echo "https://github.com/NeverDecaf/chromium-web-store/releases/latest"; }
 brav() { echo "https://github.com/brave/brave-browser/releases/latest"; }
 heli() { echo "https://github.com/imputnet/helium-linux/releases/latest"; }
 fox() { echo "https://www.waterfox.com/download/"; }
