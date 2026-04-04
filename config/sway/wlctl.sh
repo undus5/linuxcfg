@@ -193,24 +193,9 @@ screenshot-window() {
 # gsettings
 #################################################################################
 
-gsettings-check() {
-    command -v gsettings &>/dev/null || errf "command not found: gsettings\n"
-}
-
-gsettings-icon() {
-    gsettings-check
-    local name="${1}"
-    [[ -n "${name}" ]] || errf "icon theme undefined\n"
-    [[ -d "/usr/share/icons/${name}" ]] || errf "icon theme not found: ${name}\n"
-    gsettings set org.gnome.desktop.interface icon-theme "${name}"
-}
-
-gsettings-gtk() {
-    gsettings-check
-    local name="${1}"
-    [[ -n "${name}" ]] || errf "gtk theme undefined\n"
-    [[ -d "/usr/share/themes/${name}" ]] || errf "gtk theme not found: ${name}\n"
-    gsettings set org.gnome.desktop.interface gtk-theme "${name}"
+theme() {
+    echo "gsettings set org.gnome.desktop.interface icon-theme <name>"
+    echo "gsettings set org.gnome.desktop.interface gtk-theme <name>"
 }
 
 #################################################################################
