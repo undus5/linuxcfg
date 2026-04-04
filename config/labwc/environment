@@ -5,6 +5,6 @@
 XKB_DEFAULT_OPTIONS=ctrl:nocaps
 
 # cursor theme locations: ~/.local/share/icons, ~/.icons/, /usr/share/icons/
-# XCURSOR_THEME=breeze_cursors
-# XCURSOR_SIZE=24
+# XCURSOR_THEME=Bibata-Modern-Ice
+# XCURSOR_SIZE=28
 

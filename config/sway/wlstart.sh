@@ -24,6 +24,6 @@ if [[ -d "${bgdir}" ]]; then
 fi
 
 if [[ -n "${SWAYSOCK}" && -d ~/.icons/Bibata-Modern-Ice ]]; then
-    swaymsg seat seat0 xcursor_theme Bibata-Modern-Ice 32
+    swaymsg seat seat0 xcursor_theme Bibata-Modern-Ice 28
 fi
 
