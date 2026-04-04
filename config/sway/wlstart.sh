@@ -27,3 +27,7 @@ if [[ -n "${SWAYSOCK}" && -d ~/.icons/Bibata-Modern-Ice ]]; then
     swaymsg seat seat0 xcursor_theme Bibata-Modern-Ice 28
 fi
 
+if [[ -d ~/.icons/Qogir ]]; then
+    gsettings set org.gnome.desktop.interface icon-theme Qogir
+fi
+
