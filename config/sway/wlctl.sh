@@ -16,7 +16,10 @@ command-check() {
 reload() {
     [[ -n "${SWAYSOCK}" ]] && swaymsg reload
     [[ -n "${LABWC_PID}" ]] && labwc -r
-    pidof kanshi &>/dev/null && sleep 0.1 && kanshictl reload
+    if [[ -n "${SWAYSOCK}" || -n "${LABWC_PID}" ]]; then
+        wlstart.sh
+        pidof kanshi &>/dev/null && sleep 0.1 && kanshictl reload
+    fi
 }
 
 #################################################################################
