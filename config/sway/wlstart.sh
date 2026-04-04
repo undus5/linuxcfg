@@ -23,3 +23,7 @@ if [[ -d "${bgdir}" ]]; then
         -o "${usbhdmi}" -m fill -i "${bgdir}/usbhdmi.png"
 fi
 
+if [[ -n "${SWAYSOCK}" && -d ~/.icons/Bibata-Modern-Ice ]]; then
+    swaymsg seat seat0 xcursor_theme Bibata-Modern-Ice 32
+fi
+

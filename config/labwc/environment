@@ -4,7 +4,7 @@
 # XKB_DEFAULT_OPTIONS=ctrl:nocaps,altwin:swap_alt_win
 XKB_DEFAULT_OPTIONS=ctrl:nocaps
 
-# ls /usr/share/icons/
+# cursor theme locations: ~/.local/share/icons, ~/.icons/, /usr/share/icons/
 # XCURSOR_THEME=breeze_cursors
 # XCURSOR_SIZE=24
 
