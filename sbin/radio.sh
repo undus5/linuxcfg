@@ -16,6 +16,7 @@ funclist() {
 }
 
 funcname=${1}
+[[ -n "${funcname}" ]] || print_help
 funclist | grep -q "${funcname}" || print_help
 ${funcname}
 
