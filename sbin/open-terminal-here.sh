@@ -15,9 +15,9 @@ elif [[ -n "${@}" ]]; then
     exec="${1}"; shift
     args="${@}"
     if [[ "${term}" == "foot" ]]; then
-        foot ${exec} ${args}
+        foot ${exec} "${args}"
     elif [[ "${term}" == "alacritty" ]]; then
-        alacritty -e ${cmd} ${args}
+        alacritty -e ${cmd} "${args}"
     fi
 else
     if [[ "${term}" == "foot" ]]; then
