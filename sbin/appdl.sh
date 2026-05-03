@@ -6,6 +6,9 @@ chromes() { echo "https://github.com/NeverDecaf/chromium-web-store/releases/late
 helium() { echo "https://github.com/imputnet/helium-linux/releases/latest"; }
 waterfox() { echo "https://www.waterfox.com/download/"; }
 
+zed() { echo "https://github.com/zed-industries/zed/releases/latest"; }
+litexl() { echo "https://github.com/lite-xl/lite-xl/releases/latest"; }
+
 fbrowser() { echo "https://github.com/filebrowser/filebrowser/releases/latest"; }
 halloy() { echo "https://github.com/squidowl/halloy/releases/latest"; }
 lglass() { echo "https://looking-glass.io/downloads"; }

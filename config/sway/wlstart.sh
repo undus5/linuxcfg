@@ -17,10 +17,7 @@ chkcmd ${polkit_exec} && ! chksrv ${polkit_name} && bgr ${polkit_exec}
 chkcmd evars.sh && source $(which evars.sh)
 if [[ -d "${bgdir}" ]]; then
     chksrv swaybg && pidof swaybg | xargs kill -9
-    bgr swaybg \
-        -o "${screen27}" -m fill -i "${bgdir}/screen27.png" \
-        -o "${screen15}" -m fill -i "${bgdir}/screen15.png" \
-        -o "${screenusb}" -m fill -i "${bgdir}/screenusb.png"
+    bgr swaybg -m fill -i "${bgdir}/desktop.png"
 fi
 
 if [[ -n "${SWAYSOCK}" && -d ~/.icons/Bibata-Modern-Ice ]]; then
