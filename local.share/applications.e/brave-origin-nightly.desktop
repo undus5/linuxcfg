@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Brave Origin
+Name=Brave Origin Nightly
 Icon=brave-origin
 StartupWMClass=brave-origin
-Exec=bash -c '~/a/apps/brave-origin/brave-origin "$@"' brave-origin %U
+Exec=bash -c '~/a/apps/brave-origin-nightly/brave-origin-nightly "$@"' brave-origin %U
 Terminal=false
 Type=Application
 Categories=Network;WebBrowser;

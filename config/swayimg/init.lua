@@ -1,0 +1,6 @@
+swayimg.viewer.on_key("j", function()
+    swayimg.viewer.switch_image(dir: next)
+end)
+swayimg.viewer.on_key("k", function()
+    swayimg.viewer.switch_image(dir: prev)
+end)

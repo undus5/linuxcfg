@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-# https://github.com/francma/wob
-# https://gitlab.com/wef/dotfiles/-/blob/master/bin/mywob
+# official repo: https://github.com/francma/wob
+# inspired from: https://gitlab.com/wef/dotfiles/-/blob/master/bin/mywob
 
 chkcmd() { command -v "${@}" &>/dev/null; }
 print_help() { printf "Usage: $(basename $0) <integer>\n"; }

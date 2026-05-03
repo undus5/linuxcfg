@@ -7,7 +7,7 @@ bgr() { nohup "${@}" &>/dev/null & }
 chkcmd evars.sh || errf "evars.sh not found\n"
 source $(which evars.sh)
 
-vdir=${resdir}
+vdir=${rdir}
 [[ -d ${vdir} ]] || errf "directory not found: ${vdir}\n"
 port=8086
 

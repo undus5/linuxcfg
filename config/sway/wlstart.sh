@@ -18,9 +18,9 @@ chkcmd evars.sh && source $(which evars.sh)
 if [[ -d "${bgdir}" ]]; then
     chksrv swaybg && pidof swaybg | xargs kill -9
     bgr swaybg \
-        -o "${dell27}" -m fill -i "${bgdir}/dell27.png" \
-        -o "${port15}" -m fill -i "${bgdir}/port15.png" \
-        -o "${usbhdmi}" -m fill -i "${bgdir}/usbhdmi.png"
+        -o "${screen27}" -m fill -i "${bgdir}/screen27.png" \
+        -o "${screen15}" -m fill -i "${bgdir}/screen15.png" \
+        -o "${screenusb}" -m fill -i "${bgdir}/screenusb.png"
 fi
 
 if [[ -n "${SWAYSOCK}" && -d ~/.icons/Bibata-Modern-Ice ]]; then
