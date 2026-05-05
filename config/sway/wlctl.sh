@@ -104,7 +104,7 @@ sink-toggle() {
 
 scratchpad-count() {
     local count=$(swaymsg -t get_tree | grep -c '"scratchpad_state": "fresh"')
-    [[ "${count}" =~ ^[1-9]+[0-9]*$ ]] && echo "[Scratch: ${count}] " || echo ""
+    [[ "${count}" =~ ^[1-9]+[0-9]*$ ]] && echo "[ScratchPad: ${count}] " || echo ""
 }
 
 muted-label() {

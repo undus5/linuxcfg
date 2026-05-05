@@ -48,7 +48,7 @@ General control:
 `Super + Shift + Escape` kill focused window
 
 `Super + f` toggle window fullscreen\
-`Super + g` toggle status bar showing
+`Super + s` toggle status bar showing
 
 Focus onto direction:
 
@@ -89,7 +89,8 @@ Move workspace to display:
 Layout toggle:
 
 `Super + =` switch to stacking layout\
-`Super + \` toggle split layout between horizontal and vertical
+`Super + \` switch to tabbed layout\
+`Super + grave(backtick)` toggle split layout between horizontal and vertical
 
 `Super + ;`               splitv, split next window to vertical layout\
 `Super + '(single quote)` splith, split next window to horizontal layout
@@ -104,9 +105,9 @@ Volume control:
 
 Screenshot:
 
-`Print`                           take screenshot fullscreen\
-`Super + grave(backtick)`         take screenshot for selected area\
-`Super + Shift + grave(backtick)` take screenshot for window
+`Print`                     take screenshot fullscreen\
+`Super + BackSpace`         take screenshot for selected area\
+`Super + Shift + BackSpace` take screenshot for window
 
 Session control:
 
