@@ -14,17 +14,21 @@ polkit_fedora=/usr/libexec/${polkit_name}
 [[ -f "${polkit_fedora}" ]] && polkit_exec="${polkit_fedora}"
 chkcmd ${polkit_exec} && ! chksrv ${polkit_name} && bgr ${polkit_exec}
 
-chkcmd evars.sh && source $(which evars.sh)
-if [[ -d "${bgdir}" ]]; then
-    chksrv swaybg && pidof swaybg | xargs kill -9
-    bgr swaybg -m fill -i "${bgdir}/desktop.png"
-fi
+gsettings set org.gnome.desktop.privacy remember-recent-files false
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
 
-if [[ -n "${SWAYSOCK}" && -d ~/.icons/Bibata-Modern-Ice ]]; then
-    swaymsg seat seat0 xcursor_theme Bibata-Modern-Ice 28
+if [[ -n "${SWAYSOCK}" && -d ~/.icons/Qogir-Dark ]]; then
+    swaymsg seat seat0 xcursor_theme Qogir-Dark 32
 fi
 
 if [[ -d ~/.icons/Qogir ]]; then
     gsettings set org.gnome.desktop.interface icon-theme Qogir
+fi
+
+chkcmd evars.sh && source $(which evars.sh)
+if [[ -d "${bgdir}" ]]; then
+    chksrv swaybg && pidof swaybg | xargs kill -9
+    bgr swaybg -m fill -i "${bgdir}/desktop.png"
 fi
 

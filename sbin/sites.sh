@@ -21,7 +21,7 @@ start() {
     [[ -n "${pids}" ]] && exit 0
     cd ${sdir}/blog && bgr ${exec}
     cd ${sdir}/drafts && bgr ${exec}
-    cd ${sdir}/res && bgr ${exec}
+    cd ${sdir}/r && bgr ${exec}
     cd ${sdir}/hugo-pure && bgr ./demo.sh -b --watch
 }
 
