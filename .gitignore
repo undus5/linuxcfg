@@ -1,7 +1,7 @@
 /apps/
 /bin/
 /icons/*
-!/icons/hicolor/256x256/
+!/icons/hicolor/256x256/apps/
 /local.share/applications.g/
 /local.share/fonts/
 /local.share/icons/
